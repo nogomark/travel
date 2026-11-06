@@ -1,0 +1,201 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>제주 4일 일정</title>
+<style>
+/* Layout: one column of day sections, each a vertical timeline; hotel chips above */
+:root {
+  --bg: #eef2f0;
+  --surface: #ffffff;
+  --fg: #1c2a2d;
+  --muted: #5d6f72;
+  --accent: #1d6b74;
+  --line: #d3dcda;
+  --warn: #9a5b13;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121a1c;
+    --surface: #1a2528;
+    --fg: #e4ecea;
+    --muted: #9bb0ae;
+    --accent: #6fc2cc;
+    --line: #2c3b3e;
+    --warn: #e0a25a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121a1c;
+  --surface: #1a2528;
+  --fg: #e4ecea;
+  --muted: #9bb0ae;
+  --accent: #6fc2cc;
+  --line: #2c3b3e;
+  --warn: #e0a25a;
+  color-scheme: dark;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 14px/1.6 system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  padding-block: 24px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+main { max-width: 640px; margin: 0 auto; display: grid; gap: 20px; }
+header h1 { margin: 0; font-size: 24px; text-wrap: balance; }
+header p { margin: 4px 0 0; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chip {
+  font-size: 12px; padding: 4px 10px; border: 1px solid var(--line);
+  border-radius: 999px; color: var(--muted); background: var(--surface);
+}
+.day { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; min-width: 0; }
+.day h2 { margin: 0; font-size: 17px; }
+.day .sub { margin: 2px 0 14px; color: var(--muted); font-size: 13px; }
+ol.stops { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+li.stop {
+  display: grid; grid-template-columns: 22px 52px 1fr; gap: 10px; align-items: start;
+  padding: 10px 0; border-top: 1px solid var(--line);
+}
+li.stop:first-child { border-top: 0; }
+li.stop input { margin-top: 4px; accent-color: var(--accent); width: 18px; height: 18px; }
+.time { font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 600; }
+.name { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.note { color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.check { color: var(--warn); font-size: 12px; }
+li.stop.done .name, li.stop.done .note { text-decoration: line-through; opacity: .55; }
+.foot { color: var(--muted); font-size: 12px; margin: 0; padding-left: 2px; }
+.map svg { display: block; width: 100%; height: auto; }
+.map svg text { fill: var(--fg); font: 600 11px system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+.map .r1 { stroke: var(--accent); }
+.map .r2 { stroke: var(--warn); }
+.map .r3 { stroke: var(--muted); }
+.map .r4 { stroke: var(--fg); stroke-dasharray: 5 4; opacity: .55; }
+.map polyline { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.map circle { fill: var(--surface); stroke: var(--fg); stroke-width: 2; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--muted); margin: 12px 0 0; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { display: inline-block; width: 18px; height: 3px; border-radius: 2px; background: var(--c); }
+.legend i.dash { background: none; border-top: 2px dashed var(--c); height: 0; }
+</style>
+
+<main>
+  <header>
+    <h1>제주 4일 일정</h1>
+    <p>11월 21일(토) – 24일(화) · 렌터카</p>
+    <div class="chips">
+      <span class="chip">21일 제주시 · 해호텔</span>
+      <span class="chip">22–23일 서귀포 · 서귀포JS호텔</span>
+      <span class="chip">24일 18:00 출발</span>
+    </div>
+  </header>
+
+  <section class="day">
+    <h2>21일 (토) · 제주공항 도착</h2>
+    <p class="sub">해호텔 제주 1박</p>
+    <ol class="stops" data-day="0"></ol>
+  </section>
+
+  <section class="day">
+    <h2>22일 (일) · 서쪽 미술관과 박물관</h2>
+    <p class="sub">서귀포JS호텔 1박</p>
+    <ol class="stops" data-day="1"></ol>
+  </section>
+
+  <section class="day">
+    <h2>23일 (월) · 야외 위주</h2>
+    <p class="sub">서귀포JS호텔 2박 · 박물관과 미술관은 월요일 휴무</p>
+    <ol class="stops" data-day="2"></ol>
+  </section>
+
+  <section class="day">
+    <h2>24일 (화) · 출발</h2>
+    <p class="sub">오후 6시 비행기</p>
+    <ol class="stops" data-day="3"></ol>
+  </section>
+
+  <p class="foot">운영 시간과 휴무는 방문 전에 확인하세요. 체크 표시는 이 브라우저에만 저장됩니다.</p>
+</main>
+
+<script>
+const days = [
+  [
+    { time: "14:30", name: "제주국제공항", note: "도착, 렌터카 수령" },
+    { time: "15:30", name: "해호텔 제주 체크인", note: "체크인 14:00 이후, 짐 두고 출발", check: "체크인 시간 확인" },
+    { time: "16:30", name: "책방 소리소문", note: "한림읍. 토요일 11–18시", check: "운영 확인" },
+    { time: "17:30", name: "도두 무지개해안도로", note: "일몰 감상" },
+    { time: "18:30", name: "탑동 해안과 동문재래시장", note: "저녁 산책" }
+  ],
+  [
+    { time: "09:30", name: "해호텔 제주 체크아웃", note: "짐 챙겨 출발", check: "체크아웃 시간 확인" },
+    { time: "10:00", name: "김창열미술관", note: "한림읍, 물방울 작품과 실감 체험관", check: "월요일 휴무" },
+    { time: "13:00", name: "본태박물관", note: "안덕면, 안도 다다오 건축, 쿠사마 야요이 작품" },
+    { time: "15:30", name: "포도뮤지엄", note: "안덕면, 야외 조각공원" },
+    { time: "17:00", name: "서귀포JS호텔 체크인", note: "체크인 시간 확인 후 이동", check: "체크인 시간 확인" }
+  ],
+  [
+    { time: "10:00", name: "중문 대포 주상절리대", note: "오전 방문이 덜 붐빔" },
+    { time: "13:00", name: "중문·색달 해변", note: "바람 쐬기" },
+    { time: "15:00", name: "천지연폭포", note: "짧게 들르기" },
+    { time: "17:00", name: "이중섭거리", note: "저녁 산책" }
+  ],
+  [
+    { time: "11:00", name: "서귀포JS호텔 체크아웃", note: "짐 맡기고 다음 일정", check: "체크아웃 시간 확인" },
+    { time: "11:30", name: "이중섭미술관", note: "짐 맡긴 뒤 관람", check: "운영 확인" },
+    { time: "14:00", name: "서귀포 출발", note: "" },
+    { time: "16:00", name: "제주국제공항 도착, 렌터카 반납", note: "출발 1시간 전 도착 기준" }
+  ]
+];
+
+const KEY = "jeju-itinerary-done";
+let done = {};
+try { done = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { done = {}; }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {} }
+
+document.querySelectorAll("ol.stops").forEach(function (ol) {
+  const d = Number(ol.dataset.day);
+  days[d].forEach(function (s, i) {
+    const id = d + "-" + i;
+    const li = document.createElement("li");
+    li.className = "stop" + (done[id] ? " done" : "");
+
+    const box = document.createElement("input");
+    box.type = "checkbox";
+    box.id = "s-" + id;
+    box.checked = !!done[id];
+    box.addEventListener("change", function () {
+      done[id] = box.checked;
+      li.classList.toggle("done", box.checked);
+      save();
+    });
+
+    const time = document.createElement("span");
+    time.className = "time";
+    time.textContent = s.time;
+
+    const body = document.createElement("label");
+    body.htmlFor = box.id;
+    const name = document.createElement("div");
+    name.className = "name";
+    name.textContent = s.name;
+    body.appendChild(name);
+    if (s.note) {
+      const note = document.createElement("div");
+      note.className = "note";
+      note.textContent = s.note;
+      body.appendChild(note);
+    }
+    if (s.check) {
+      const c = document.createElement("div");
+      c.className = "check";
+      c.textContent = s.check;
+      body.appendChild(c);
+    }
+
+    li.append(box, time, body);
+    ol.appendChild(li);
+  });
+});
+</script>
